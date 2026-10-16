@@ -52,7 +52,7 @@ export async function mountPopup(baseName, { optionsHash = '' } = {}) {
 export function openOptions(hash = '') {
   const u = api.runtime.getURL(`options/options.html${hash ? `#${hash}` : ''}`);
   api.tabs.create({ url: u });
-  window.close?.();
+  if (document.body.classList.contains('popup')) window.close();
 }
 
 /**

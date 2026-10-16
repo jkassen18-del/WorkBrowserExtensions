@@ -31,7 +31,8 @@ and `pull()` returns `null`.
 ```
 my-extension/
 ├── manifest.json      MV3. "name" is the base name (the build adds the brand prefix). "wx": { "glyph": "..." }
-├── defaults.js        export default { ...every setting with its default... }  (+ optional export const DESCRIPTIONS)
+├── defaults.js        export default { ...every setting with its default... }
+│                      optional: export const DESCRIPTIONS = { key: 'text' }, export const SCHEMA = { key: <schema> } (overrides inference, e.g. empty lists of objects)
 ├── settings.js        import DEFAULTS from './defaults.js'; export const settings = createSettings(DEFAULTS)
 ├── background.js      module; calls startBackground()
 ├── options/options.html + options.js   mountApp({ baseName, tagline, settings, panels, syncCollections, welcomeSteps })

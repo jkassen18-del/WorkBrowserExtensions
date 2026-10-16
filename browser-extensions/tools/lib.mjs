@@ -123,8 +123,11 @@ export function deepMerge(a, b) {
   return JSON.parse(JSON.stringify(out));
 }
 
-/** Chrome managed-storage schema inferred from a defaults object. */
-export function schemaFromDefaults(defaults, descriptions = {}) {
+/**
+ * Chrome managed-storage schema inferred from a defaults object. `overrides` (defaults.js
+ * `export const SCHEMA`) replaces the inferred schema of a key, e.g. for empty object lists.
+ */
+export function schemaFromDefaults(defaults, descriptions = {}, overrides = {}) {
   const infer = (v) => {
     if (Array.isArray(v)) {
       const first = v.find((x) => x != null);
@@ -145,7 +148,7 @@ export function schemaFromDefaults(defaults, descriptions = {}) {
   };
   const properties = {};
   for (const [k, v] of Object.entries(defaults)) {
-    properties[k] = infer(v);
+    properties[k] = overrides[k] ? { ...overrides[k] } : infer(v);
     if (descriptions[k]) properties[k].description = descriptions[k];
   }
   const settingsProps = JSON.parse(JSON.stringify(properties));

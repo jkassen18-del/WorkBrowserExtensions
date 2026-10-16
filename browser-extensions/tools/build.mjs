@@ -60,9 +60,9 @@ function loadBrand(brandPath) {
 
 async function loadDefaults(ext) {
   const file = path.join(ROOT, ext, 'defaults.js');
-  if (!fs.existsSync(file)) return { defaults: {}, descriptions: {} };
+  if (!fs.existsSync(file)) return { defaults: {}, descriptions: {}, overrides: {} };
   const mod = await import(`${pathToFileURL(file).href}?t=${Date.now()}`);
-  return { defaults: mod.default || {}, descriptions: mod.DESCRIPTIONS || {} };
+  return { defaults: mod.default || {}, descriptions: mod.DESCRIPTIONS || {}, overrides: mod.SCHEMA || {} };
 }
 
 function transformManifest(src, browser, ext, brand) {
@@ -116,8 +116,8 @@ export async function build(opts = {}) {
   for (const ext of exts) {
     const srcDir = path.join(ROOT, ext);
     const srcManifest = JSON.parse(fs.readFileSync(path.join(srcDir, 'manifest.json'), 'utf8'));
-    const { defaults, descriptions } = await loadDefaults(ext);
-    const schema = schemaFromDefaults(defaults, descriptions);
+    const { defaults, descriptions, overrides } = await loadDefaults(ext);
+    const schema = schemaFromDefaults(defaults, descriptions, overrides);
     // Keep the documented schema in the source tree in sync with defaults.js.
     fs.writeFileSync(path.join(srcDir, 'schema.json'), `${JSON.stringify(schema, null, 2)}\n`);
 

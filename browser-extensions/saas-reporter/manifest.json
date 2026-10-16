@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "SaaS Usage Reporter",
+  "short_name": "SaaS Usage",
+  "version": "1.0.0",
+  "description": "See which SaaS apps you use and for how long, spot unused licences and unapproved tools. Stored on this device; domains only.",
+  "wx": { "glyph": "bars" },
+  "permissions": ["storage", "unlimitedStorage", "tabs", "idle", "alarms"],
+  "optional_host_permissions": ["https://*/*", "http://*/*"],
+  "background": { "service_worker": "background.js", "type": "module" },
+  "options_ui": { "page": "options/options.html", "open_in_tab": true },
+  "action": { "default_popup": "popup/popup.html", "default_title": "{name}" }
+}

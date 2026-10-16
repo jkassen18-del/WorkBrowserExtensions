@@ -1,0 +1,262 @@
+{
+  "type": "object",
+  "properties": {
+    "defaults": {
+      "type": "object",
+      "description": "Suggested values the user can change. Same keys as the enforced settings.",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "description": "Record time spent in known SaaS apps (domain only)."
+        },
+        "retentionDays": {
+          "type": "integer",
+          "description": "Days of daily usage totals to keep in this browser."
+        },
+        "idleSeconds": {
+          "type": "integer",
+          "description": "Stop counting after this many seconds without keyboard or mouse input (minimum 15)."
+        },
+        "excludedDomains": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Domains that are never recorded, e.g. \"linkedin.com\"."
+        },
+        "approvedApps": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "App ids marked as approved by IT."
+        },
+        "unapprovedApps": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "App ids marked as not approved by IT."
+        },
+        "licences": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "appId": {
+                "type": "string"
+              },
+              "seats": {
+                "type": "integer"
+              },
+              "costPerMonth": {
+                "type": "number"
+              },
+              "owner": {
+                "type": "string"
+              }
+            }
+          },
+          "description": "Paid licences: [{ \"id\", \"appId\", \"seats\", \"costPerMonth\", \"owner\" }]."
+        },
+        "customApps": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "domains": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "category": {
+                "type": "string"
+              }
+            }
+          },
+          "description": "Extra apps to recognise: [{ \"id\", \"name\", \"domains\": [\"example.com\"], \"category\" }]."
+        },
+        "unusedAfterDays": {
+          "type": "integer",
+          "description": "A licensed app counts as unused when it was not opened for this many days."
+        },
+        "currency": {
+          "type": "string",
+          "description": "ISO currency code used to show licence costs."
+        },
+        "reportingEnabled": {
+          "type": "boolean",
+          "description": "Allow sending anonymous usage totals to the linked shared-data backend."
+        },
+        "reportPeriodDays": {
+          "type": "integer",
+          "description": "Number of days each report covers. Automatic reports are sent once per period."
+        }
+      }
+    },
+    "brand": {
+      "type": "object",
+      "description": "Enforced brand kit fields (locked in Settings -> Branding).",
+      "properties": {
+        "companyName": {
+          "type": "string"
+        },
+        "productPrefix": {
+          "type": "string"
+        },
+        "logo": {
+          "type": "string"
+        },
+        "primary": {
+          "type": "string"
+        },
+        "accent": {
+          "type": "string"
+        },
+        "theme": {
+          "type": "string"
+        },
+        "radius": {
+          "type": "integer"
+        },
+        "supportUrl": {
+          "type": "string"
+        },
+        "supportEmail": {
+          "type": "string"
+        },
+        "footerText": {
+          "type": "string"
+        }
+      }
+    },
+    "connection": {
+      "type": "object",
+      "description": "Optional shared-data backend. type: none | webhook | rest | supabase.",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        },
+        "tablePrefix": {
+          "type": "string"
+        },
+        "autoSync": {
+          "type": "boolean"
+        }
+      }
+    },
+    "enabled": {
+      "type": "boolean",
+      "description": "Record time spent in known SaaS apps (domain only)."
+    },
+    "retentionDays": {
+      "type": "integer",
+      "description": "Days of daily usage totals to keep in this browser."
+    },
+    "idleSeconds": {
+      "type": "integer",
+      "description": "Stop counting after this many seconds without keyboard or mouse input (minimum 15)."
+    },
+    "excludedDomains": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Domains that are never recorded, e.g. \"linkedin.com\"."
+    },
+    "approvedApps": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "App ids marked as approved by IT."
+    },
+    "unapprovedApps": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "App ids marked as not approved by IT."
+    },
+    "licences": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "appId": {
+            "type": "string"
+          },
+          "seats": {
+            "type": "integer"
+          },
+          "costPerMonth": {
+            "type": "number"
+          },
+          "owner": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Paid licences: [{ \"id\", \"appId\", \"seats\", \"costPerMonth\", \"owner\" }]."
+    },
+    "customApps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "domains": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "category": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Extra apps to recognise: [{ \"id\", \"name\", \"domains\": [\"example.com\"], \"category\" }]."
+    },
+    "unusedAfterDays": {
+      "type": "integer",
+      "description": "A licensed app counts as unused when it was not opened for this many days."
+    },
+    "currency": {
+      "type": "string",
+      "description": "ISO currency code used to show licence costs."
+    },
+    "reportingEnabled": {
+      "type": "boolean",
+      "description": "Allow sending anonymous usage totals to the linked shared-data backend."
+    },
+    "reportPeriodDays": {
+      "type": "integer",
+      "description": "Number of days each report covers. Automatic reports are sent once per period."
+    }
+  }
+}
