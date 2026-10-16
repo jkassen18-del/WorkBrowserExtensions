@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "Ticket Snap",
+  "version": "1.0.0",
+  "description": "Screenshot a tab, mark it up and turn it into a support ticket with diagnostics attached. Works with no setup for {company}.",
+  "wx": { "glyph": "camera" },
+  "permissions": ["storage", "unlimitedStorage", "activeTab", "scripting", "alarms"],
+  "optional_host_permissions": ["https://*/*", "http://*/*"],
+  "background": { "service_worker": "background.js", "type": "module" },
+  "options_ui": { "page": "options/options.html", "open_in_tab": true },
+  "action": { "default_popup": "popup/popup.html", "default_title": "{name}: report a problem" },
+  "commands": {
+    "capture-tab": {
+      "suggested_key": { "default": "Alt+Shift+S" },
+      "description": "Capture this tab and start a ticket"
+    }
+  }
+}

@@ -1,0 +1,62 @@
+/* Ticket Snap settings and My tickets. */
+.ts-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+.ts-head h1 { margin: 0 0 2px; }
+.ts-head p { margin: 0; }
+.ts-filters { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-bottom: 12px; }
+.ts-filters input[type="search"] { max-width: 280px; }
+.ts-filters select { width: auto; }
+.ts-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-bottom: 16px; }
+.ts-stats .card { margin: 0; }
+@media (max-width: 520px) { .ts-stats { grid-template-columns: 1fr; } }
+
+.ts-list { display: flex; flex-direction: column; gap: 10px; }
+.ts-item {
+  display: grid; grid-template-columns: 132px minmax(0, 1fr) auto; gap: 14px; align-items: center;
+  padding: 12px; margin: 0;
+}
+.ts-thumb {
+  width: 132px; height: 82px; border-radius: 6px; border: 1px solid var(--wx-border); background: var(--wx-surface-2);
+  object-fit: cover; object-position: top left; cursor: zoom-in; padding: 0; display: block;
+}
+.ts-thumb.none { display: grid; place-items: center; color: var(--wx-muted); cursor: pointer; }
+.ts-thumb.none svg { width: 24px; height: 24px; }
+.ts-item .ts-title {
+  font-weight: 600; font-size: 15px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  background: none; border: 0; padding: 0; color: inherit; font-family: inherit; cursor: pointer; text-align: left; max-width: 100%;
+}
+.ts-item .ts-title:hover { color: var(--wx-primary); }
+.ts-item .ts-meta { color: var(--wx-muted); font-size: 12.5px; margin-top: 2px; display: flex; flex-wrap: wrap; gap: 4px 8px; align-items: center; }
+.ts-item .ts-badges { display: flex; gap: 6px; margin-top: 6px; flex-wrap: wrap; }
+.ts-item .ts-msg { color: var(--wx-danger); font-size: 12.5px; margin-top: 4px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ts-actions { display: flex; gap: 4px; flex-wrap: nowrap; justify-content: flex-end; }
+@media (max-width: 900px) {
+  .ts-item { grid-template-columns: 96px minmax(0, 1fr); }
+  .ts-thumb { width: 96px; height: 60px; }
+  .ts-actions { grid-column: 1 / -1; justify-content: flex-start; flex-wrap: wrap; }
+}
+
+.wx-modal:has(.ts-detail) { width: min(920px, 100%); }
+.ts-detail-img { width: 100%; border-radius: 6px; border: 1px solid var(--wx-border); display: block; margin-bottom: 12px; }
+.ts-detail .ts-desc { white-space: pre-wrap; background: var(--wx-surface-2); padding: 10px 12px; border-radius: 8px; margin-bottom: 12px; }
+.ts-detail .table th { text-transform: none; letter-spacing: 0; width: 34%; font-size: 12.5px; }
+.ts-detail .table td { word-break: break-word; font-size: 13px; }
+.ts-detail .table ul { margin: 0; padding-left: 16px; }
+.ts-kv { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 8px 16px; margin-bottom: 12px; }
+.ts-kv > div > span:first-child { display: block; color: var(--wx-muted); font-size: 12px; }
+
+.ts-dest-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 8px; margin-bottom: 16px; }
+.ts-dest-opt {
+  display: flex; gap: 10px; align-items: flex-start; padding: 10px 12px; margin: 0; cursor: pointer; font-weight: 400;
+  border: 1px solid var(--wx-border); border-radius: calc(var(--wx-radius) * 0.7); background: var(--wx-surface);
+}
+.ts-dest-opt:hover { background: var(--wx-surface-2); }
+.ts-dest-opt.selected { border-color: var(--wx-primary); background: rgba(var(--wx-primary-rgb), 0.07); box-shadow: 0 0 0 1px var(--wx-primary); }
+.ts-dest-opt input { margin-top: 3px; accent-color: var(--wx-primary); }
+.ts-dest-opt b { display: block; font-weight: 600; }
+.ts-dest-opt small { color: var(--wx-muted); font-size: 12px; }
+.ts-shortcut { font-size: 18px; }
+.ts-shortcut kbd { font-size: 15px; padding: 2px 8px; }
+.ts-checks { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.ts-checks .check { margin: 0; }
+.ts-collected { columns: 2; margin: 0; padding-left: 18px; }
+@media (max-width: 700px) { .ts-collected { columns: 1; } }
