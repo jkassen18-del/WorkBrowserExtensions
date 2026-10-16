@@ -1,0 +1,13 @@
+Windows Registry Editor Version 5.00
+
+; Go-Links: suggest a company link list, enforce brand colour.
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge\3rdparty\extensions\EXTENSION_ID\policy]
+"brand"="{\"companyName\":\"Acme Inc.\",\"primary\":\"#4F46E5\",\"accent\":\"#0EA5E9\",\"supportUrl\":\"https://intranet.acme.example/it-help\"}"
+
+; Chrome reads JSON objects from REG_SZ values for complex policy keys.
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge\3rdparty\extensions\EXTENSION_ID\policy\defaults]
+"openInNewTab"=dword:00000000
+
+; Data Leak Guard example: enforce blocking on AI chatbots (uncomment and use the DLP extension ID).
+; [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge\3rdparty\extensions\DLP_EXTENSION_ID\policy]
+; "allowPause"=dword:00000000

@@ -1,0 +1,16 @@
+{
+  "3rdparty": {
+    "extensions": {
+      "EXTENSION_ID": {
+        "brand": { "companyName": "Acme Inc.", "primary": "#4F46E5", "accent": "#0EA5E9" },
+        "defaults": {}
+      }
+    }
+  },
+  "ExtensionSettings": {
+    "EXTENSION_ID": {
+      "installation_mode": "force_installed",
+      "update_url": "https://clients2.google.com/service/update2/crx"
+    }
+  }
+}

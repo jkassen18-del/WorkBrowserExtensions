@@ -1,0 +1,18 @@
+{
+  "policies": {
+    "ExtensionSettings": {
+      "go-links@acme.example": {
+        "installation_mode": "force_installed",
+        "install_url": "https://intranet.acme.example/extensions/go-links-1.0.0.xpi"
+      }
+    },
+    "3rdparty": {
+      "Extensions": {
+        "go-links@acme.example": {
+          "brand": { "companyName": "Acme Inc.", "primary": "#4F46E5", "accent": "#0EA5E9" },
+          "defaults": {}
+        }
+      }
+    }
+  }
+}

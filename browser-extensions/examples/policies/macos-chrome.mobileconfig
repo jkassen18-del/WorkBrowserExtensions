@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>PayloadContent</key>
+  <array>
+    <dict>
+      <key>PayloadType</key>
+      <string>com.google.Chrome.extensions.EXTENSION_ID</string>
+      <key>PayloadIdentifier</key>
+      <string>com.acme.extensions.golinks</string>
+      <key>PayloadUUID</key>
+      <string>6F1D3C2A-6A0E-4C1B-9C55-1B7E2D0A9F11</string>
+      <key>PayloadVersion</key>
+      <integer>1</integer>
+      <key>brand</key>
+      <dict>
+        <key>companyName</key><string>Acme Inc.</string>
+        <key>primary</key><string>#4F46E5</string>
+        <key>accent</key><string>#0EA5E9</string>
+      </dict>
+      <key>defaults</key>
+      <dict/>
+    </dict>
+  </array>
+  <key>PayloadDisplayName</key>
+  <string>Acme browser extensions</string>
+  <key>PayloadIdentifier</key>
+  <string>com.acme.extensions</string>
+  <key>PayloadType</key>
+  <string>Configuration</string>
+  <key>PayloadUUID</key>
+  <string>0B8E7C55-3E44-4F7A-8C4B-2D3A9F6E1C20</string>
+  <key>PayloadVersion</key>
+  <integer>1</integer>
+</dict>
+</plist>
