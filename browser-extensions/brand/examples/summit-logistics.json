@@ -1,0 +1,13 @@
+{
+  "companyName": "Summit Logistics",
+  "productPrefix": "Summit",
+  "logo": "",
+  "primary": "#0F766E",
+  "accent": "#F59E0B",
+  "theme": "light",
+  "radius": 6,
+  "supportUrl": "https://help.summit-logistics.example",
+  "supportEmail": "servicedesk@summit-logistics.example",
+  "footerText": "Summit Logistics IT",
+  "extensionIdDomain": "summit-logistics.example"
+}

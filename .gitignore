@@ -1,0 +1,4 @@
+node_modules/
+browser-extensions/dist/
+browser-extensions/screenshots/
+.DS_Store

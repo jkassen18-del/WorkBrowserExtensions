@@ -1,0 +1,13 @@
+{
+  "companyName": "Northwind Health",
+  "productPrefix": "Northwind",
+  "logo": "",
+  "primary": "#BE185D",
+  "accent": "#7C3AED",
+  "theme": "dark",
+  "radius": 14,
+  "supportUrl": "",
+  "supportEmail": "it@northwind-health.example",
+  "footerText": "Northwind Health IT",
+  "extensionIdDomain": "northwind-health.example"
+}
