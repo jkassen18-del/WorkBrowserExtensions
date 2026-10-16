@@ -76,7 +76,9 @@ const shoot = async (target, name) => {
     const b = document.body;
     if (!b || !b.children.length) return false;
     const main = b.querySelector('.wx-main');
-    return !main || (main.children.length > 0 && main.textContent.trim() !== 'Loading…');
+    if (main) return main.children.length > 0 && main.textContent.trim() !== 'Loading…';
+    // Popups and other pages: wait for something visible besides <script> tags.
+    return [...b.children].some((c) => c.tagName !== 'SCRIPT' && c.getBoundingClientRect().height > 0);
   }, null, { timeout: 10000 }).catch(() => {});
   await page.waitForTimeout(600);
   const file = path.join(outDir, `${ext}-${name}.png`);

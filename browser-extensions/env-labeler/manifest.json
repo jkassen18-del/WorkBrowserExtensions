@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "Environment Labeler",
+  "version": "1.0.0",
+  "description": "Makes production, staging and development tabs impossible to mix up: coloured ribbon, tab title prefix, favicon tint, toolbar badge and a check before submitting forms on production.",
+  "wx": { "glyph": "flag" },
+  "permissions": ["storage", "unlimitedStorage", "alarms", "activeTab", "scripting"],
+  "optional_host_permissions": ["https://*/*", "http://*/*"],
+  "background": { "service_worker": "background.js", "type": "module" },
+  "options_ui": { "page": "options/options.html", "open_in_tab": true },
+  "action": { "default_popup": "popup/popup.html" },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content/indicator.js", "content/content.js"],
+      "run_at": "document_start",
+      "all_frames": false
+    }
+  ]
+}

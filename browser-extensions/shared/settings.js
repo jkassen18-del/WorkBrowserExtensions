@@ -11,13 +11,40 @@ const USER_KEY = 'settings';
 // Managed keys that are not settings (handled elsewhere).
 const NON_SETTING_KEYS = new Set(['defaults', 'brand', 'connection']);
 
-export async function readManaged() {
-  try {
-    if (!api.storage.managed) return {};
-    return (await api.storage.managed.get(null)) || {};
-  } catch {
+// Chrome's first storage.managed read in a fresh profile can take several seconds while the
+// policy service starts. Don't block the UI on it: after MANAGED_TIMEOUT_MS we carry on with the
+// last known policy (cached in storage.local) and storage.onChanged('managed') refreshes later.
+const MANAGED_TIMEOUT_MS = 1200;
+let managedPromise = null;
+
+function fetchManaged() {
+  if (!api.storage.managed) return Promise.resolve({});
+  return Promise.resolve(api.storage.managed.get(null))
+    .then((v) => {
+      const value = v || {};
+      api.storage.local.set({ lastManaged: value }).catch(() => {});
+      return value;
+    })
     // No policy installed (Firefox throws when there is no managed storage manifest).
-    return {};
+    .catch(() => ({}));
+}
+
+export async function readManaged() {
+  if (!managedPromise) {
+    managedPromise = fetchManaged();
+    managedPromise.finally(() => setTimeout(() => { managedPromise = null; }, 2000));
+  }
+  let timer;
+  const fallback = new Promise((resolve) => {
+    timer = setTimeout(async () => {
+      const { lastManaged = {} } = await api.storage.local.get('lastManaged').catch(() => ({}));
+      resolve(lastManaged);
+    }, MANAGED_TIMEOUT_MS);
+  });
+  try {
+    return await Promise.race([managedPromise, fallback]);
+  } finally {
+    clearTimeout(timer);
   }
 }
 

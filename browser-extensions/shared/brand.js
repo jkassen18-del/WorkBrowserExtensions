@@ -91,7 +91,7 @@ export function contrastText(hex) {
   return L > 0.4 ? '#0b1020' : '#ffffff';
 }
 
-/** Applies the brand to a document: CSS variables, theme and favicon. */
+/** Applies the brand to a document: CSS variables and theme. */
 export function applyBrand(brand, doc = document) {
   const root = doc.documentElement;
   const [r, g, b] = hexToRgb(brand.primary);
