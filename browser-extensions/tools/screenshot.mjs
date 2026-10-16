@@ -71,7 +71,13 @@ const shoot = async (target, name) => {
   page.on('console', (m) => { if (m.type() === 'error') { failures++; console.log(`  console.error [${name}]: ${m.text()}`); } });
   page.on('pageerror', (e) => { failures++; console.log(`  pageerror [${name}]: ${e.message}`); });
   await page.goto(target);
-  await page.waitForFunction(() => document.body && document.body.children.length > 0, null, { timeout: 8000 }).catch(() => {});
+  // The first storage.managed read in a fresh profile can take a couple of seconds.
+  await page.waitForFunction(() => {
+    const b = document.body;
+    if (!b || !b.children.length) return false;
+    const main = b.querySelector('.wx-main');
+    return !main || (main.children.length > 0 && main.textContent.trim() !== 'Loading…');
+  }, null, { timeout: 10000 }).catch(() => {});
   await page.waitForTimeout(600);
   const file = path.join(outDir, `${ext}-${name}.png`);
   await page.screenshot({ path: file });

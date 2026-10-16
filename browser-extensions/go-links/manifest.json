@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+  "name": "Go-Links",
+  "version": "1.0.0",
+  "description": "{company} short links: type go/payroll in the address bar, or go + space in the omnibox. Your links stay in this browser.",
+  "wx": { "glyph": "link" },
+  "permissions": ["storage", "unlimitedStorage", "alarms", "declarativeNetRequest", "activeTab"],
+  "host_permissions": [
+    "*://go/*",
+    "https://www.google.com/*",
+    "https://www.google.co.uk/*",
+    "https://www.google.ca/*",
+    "https://www.google.de/*",
+    "https://www.google.fr/*",
+    "https://www.google.com.au/*",
+    "https://www.google.co.in/*",
+    "https://www.bing.com/*",
+    "https://duckduckgo.com/*",
+    "https://search.yahoo.com/*",
+    "https://www.ecosia.org/*",
+    "https://search.brave.com/*"
+  ],
+  "optional_host_permissions": ["https://*/*", "http://*/*"],
+  "background": { "service_worker": "background.js", "type": "module" },
+  "omnibox": { "keyword": "go" },
+  "action": { "default_popup": "popup/popup.html", "default_title": "{name}" },
+  "options_ui": { "page": "options/options.html", "open_in_tab": true },
+  "commands": {
+    "_execute_action": { "suggested_key": { "default": "Alt+G" }, "description": "Open the go-link search" }
+  },
+  "declarative_net_request": {
+    "rule_resources": [{ "id": "go_capture", "enabled": true, "path": "rules.json" }]
+  },
+  "web_accessible_resources": [
+    { "resources": ["resolver/resolve.html"], "matches": ["<all_urls>"] }
+  ]
+}

@@ -76,7 +76,7 @@ function transformManifest(src, browser, ext, brand) {
   const baseName = m.name;
   m.name = brand.productPrefix ? `${brand.productPrefix} ${baseName}` : baseName;
   m.short_name = m.short_name || baseName.slice(0, 12);
-  if (brand.companyName && m.description) m.description = m.description.replace(/\{company\}/g, brand.companyName);
+  if (brand.companyName && m.description) m.description = m.description.replace(/\{company\}(\.?)/g, (_, dot) => brand.companyName.replace(/\.$/, '') + (dot || (brand.companyName.endsWith('.') ? '.' : '')));
   if (brand.companyName) m.author = m.author || brand.companyName;
   m.icons = Object.fromEntries(ICON_SIZES.map((s) => [String(s), `icons/icon-${s}.png`]));
   m.action = { ...(m.action || {}), default_icon: Object.fromEntries([16, 32, 48].map((s) => [String(s), `icons/icon-${s}.png`])) };

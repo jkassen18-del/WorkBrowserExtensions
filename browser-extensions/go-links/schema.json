@@ -1,0 +1,122 @@
+{
+  "type": "object",
+  "properties": {
+    "defaults": {
+      "type": "object",
+      "description": "Suggested values the user can change. Same keys as the enforced settings.",
+      "properties": {
+        "captureAddressBar": {
+          "type": "boolean",
+          "description": "Catch go/name typed in the address bar (and searches for exactly \"go/name\") and open the link."
+        },
+        "openInNewTab": {
+          "type": "boolean",
+          "description": "Open links from the popup and the directory in a new tab instead of the current one."
+        },
+        "caseInsensitive": {
+          "type": "boolean",
+          "description": "Match link names regardless of upper/lower case (go/Payroll = go/payroll)."
+        },
+        "refreshHours": {
+          "type": "integer",
+          "description": "How often shared link lists are re-downloaded, in hours."
+        },
+        "sharePersonalLinks": {
+          "type": "boolean",
+          "description": "When a shared backend is linked, also upload this person's own links."
+        },
+        "sourceUrls": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Link-list URLs (JSON) added for everyone. They appear under Sources and cannot be removed by the user."
+        }
+      }
+    },
+    "brand": {
+      "type": "object",
+      "description": "Enforced brand kit fields (locked in Settings -> Branding).",
+      "properties": {
+        "companyName": {
+          "type": "string"
+        },
+        "productPrefix": {
+          "type": "string"
+        },
+        "logo": {
+          "type": "string"
+        },
+        "primary": {
+          "type": "string"
+        },
+        "accent": {
+          "type": "string"
+        },
+        "theme": {
+          "type": "string"
+        },
+        "radius": {
+          "type": "integer"
+        },
+        "supportUrl": {
+          "type": "string"
+        },
+        "supportEmail": {
+          "type": "string"
+        },
+        "footerText": {
+          "type": "string"
+        }
+      }
+    },
+    "connection": {
+      "type": "object",
+      "description": "Optional shared-data backend. type: none | webhook | rest | supabase.",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        },
+        "tablePrefix": {
+          "type": "string"
+        },
+        "autoSync": {
+          "type": "boolean"
+        }
+      }
+    },
+    "captureAddressBar": {
+      "type": "boolean",
+      "description": "Catch go/name typed in the address bar (and searches for exactly \"go/name\") and open the link."
+    },
+    "openInNewTab": {
+      "type": "boolean",
+      "description": "Open links from the popup and the directory in a new tab instead of the current one."
+    },
+    "caseInsensitive": {
+      "type": "boolean",
+      "description": "Match link names regardless of upper/lower case (go/Payroll = go/payroll)."
+    },
+    "refreshHours": {
+      "type": "integer",
+      "description": "How often shared link lists are re-downloaded, in hours."
+    },
+    "sharePersonalLinks": {
+      "type": "boolean",
+      "description": "When a shared backend is linked, also upload this person's own links."
+    },
+    "sourceUrls": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Link-list URLs (JSON) added for everyone. They appear under Sources and cannot be removed by the user."
+    }
+  }
+}
