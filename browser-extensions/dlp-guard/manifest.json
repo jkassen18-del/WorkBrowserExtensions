@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Data Leak Guard",
+  "short_name": "Leak Guard",
+  "version": "1.0.0",
+  "description": "Warns before card numbers, ID numbers, API keys and confidential text are pasted, dropped, sent or uploaded to AI chatbots, personal email and file-sharing sites. Nothing leaves your browser.",
+  "wx": { "glyph": "shield" },
+  "permissions": ["storage", "unlimitedStorage", "activeTab", "alarms"],
+  "optional_host_permissions": ["https://*/*", "http://*/*"],
+  "background": { "service_worker": "background.js", "type": "module" },
+  "options_ui": { "page": "options/options.html", "open_in_tab": true },
+  "action": { "default_popup": "popup/popup.html", "default_title": "{name}" },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content/sites.js", "content/detectors.js", "content/guard.js"],
+      "run_at": "document_start",
+      "all_frames": true,
+      "match_about_blank": true
+    }
+  ]
+}

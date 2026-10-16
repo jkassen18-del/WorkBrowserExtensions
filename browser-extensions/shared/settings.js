@@ -25,6 +25,10 @@ const clone = (v) => (v === undefined ? v : JSON.parse(JSON.stringify(v)));
 
 export function createSettings(DEFAULTS) {
   let cache = null;
+  // Drop the cache whenever user settings or policy change, so get() never returns stale values.
+  api.storage.onChanged.addListener((changes, area) => {
+    if ((area === 'local' && USER_KEY in changes) || area === 'managed') cache = null;
+  });
 
   async function load() {
     const managed = await readManaged();
