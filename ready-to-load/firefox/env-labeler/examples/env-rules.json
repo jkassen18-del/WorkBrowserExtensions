@@ -1,0 +1,16 @@
+{
+  "environments": [
+    { "id": "prod", "name": "Production", "short": "PROD", "color": "#DC2626", "confirmSubmit": true },
+    { "id": "staging", "name": "Staging", "short": "STG", "color": "#F59E0B" },
+    { "id": "training", "name": "Training", "short": "TRN", "color": "#0EA5E9" }
+  ],
+  "rules": [
+    { "id": "crm-prod", "pattern": "crm.example.com", "env": "prod", "label": "CRM" },
+    { "id": "billing-admin", "pattern": "https://billing.example.com/admin*", "env": "prod", "label": "Billing admin" },
+    { "id": "eu-apps", "pattern": "*.eu.example.com", "env": "prod", "label": "EU apps" },
+    { "id": "api-stage", "pattern": "api.example.com:8443", "env": "staging", "label": "API (staging port)" },
+    { "id": "staging-all", "pattern": "*.staging.example.com", "env": "staging" },
+    { "id": "training", "pattern": "/^https:\\/\\/train[0-9]+\\.example\\.com\\//", "env": "training", "label": "Training tenants" },
+    { "id": "docs-exception", "pattern": "docs.example.com", "env": "none", "label": "Docs are not an environment" }
+  ]
+}

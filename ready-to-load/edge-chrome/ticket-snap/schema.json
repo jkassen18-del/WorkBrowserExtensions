@@ -1,0 +1,328 @@
+{
+  "type": "object",
+  "properties": {
+    "defaults": {
+      "type": "object",
+      "description": "Suggested values the user can change. Same keys as the enforced settings.",
+      "properties": {
+        "destination": {
+          "type": "string",
+          "description": "Where new tickets go: local (My tickets only), email, webhook, jira, zendesk, freshdesk or servicenow. Tickets are always kept in My tickets too."
+        },
+        "helpdeskEmail": {
+          "type": "string",
+          "description": "Help-desk address for the email destination. Empty uses the brand support email."
+        },
+        "webhookUrl": {
+          "type": "string",
+          "description": "URL that receives each ticket as JSON (POST), including the screenshot as base64."
+        },
+        "webhookToken": {
+          "type": "string",
+          "description": "Optional token sent as \"Authorization: Bearer <token>\" to the webhook."
+        },
+        "jiraSite": {
+          "type": "string",
+          "description": "Jira site, e.g. https://acme.atlassian.net"
+        },
+        "jiraEmail": {
+          "type": "string",
+          "description": "Atlassian account email used with the API token."
+        },
+        "jiraToken": {
+          "type": "string",
+          "description": "Atlassian API token."
+        },
+        "jiraServiceDeskId": {
+          "type": "string",
+          "description": "Jira Service Management service desk id. With a request type id, tickets are created as customer requests."
+        },
+        "jiraRequestTypeId": {
+          "type": "string",
+          "description": "Jira Service Management request type id."
+        },
+        "jiraProjectKey": {
+          "type": "string",
+          "description": "Jira project key, used when no service desk id is set (creates a plain issue)."
+        },
+        "jiraIssueType": {
+          "type": "string",
+          "description": "Issue type name for plain Jira issues, e.g. Task or Bug."
+        },
+        "zendeskSubdomain": {
+          "type": "string",
+          "description": "Zendesk subdomain (acme for acme.zendesk.com)."
+        },
+        "zendeskEmail": {
+          "type": "string",
+          "description": "Zendesk agent email used with the API token."
+        },
+        "zendeskToken": {
+          "type": "string",
+          "description": "Zendesk API token."
+        },
+        "freshdeskDomain": {
+          "type": "string",
+          "description": "Freshdesk domain (acme for acme.freshdesk.com)."
+        },
+        "freshdeskApiKey": {
+          "type": "string",
+          "description": "Freshdesk API key."
+        },
+        "servicenowInstance": {
+          "type": "string",
+          "description": "ServiceNow instance (acme for acme.service-now.com)."
+        },
+        "servicenowUser": {
+          "type": "string",
+          "description": "ServiceNow user name."
+        },
+        "servicenowPassword": {
+          "type": "string",
+          "description": "ServiceNow password."
+        },
+        "categories": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Categories offered in the ticket form."
+        },
+        "defaultPriority": {
+          "type": "string",
+          "description": "Priority preselected in the ticket form: low, normal, high or urgent."
+        },
+        "requiredFields": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Fields that must be filled: summary, description, category, requesterName, requesterEmail."
+        },
+        "requesterName": {
+          "type": "string",
+          "description": "Requester name prefilled in the ticket form."
+        },
+        "requesterEmail": {
+          "type": "string",
+          "description": "Requester email prefilled in the ticket form."
+        },
+        "rememberRequester": {
+          "type": "boolean",
+          "description": "Remember the name and email typed in the ticket form for next time."
+        },
+        "includeDiagnostics": {
+          "type": "boolean",
+          "description": "Attach browser and page diagnostics to new tickets by default."
+        },
+        "includeUrl": {
+          "type": "boolean",
+          "description": "Include the page URL (and failed request URLs) in diagnostics."
+        },
+        "redactColor": {
+          "type": "string",
+          "description": "Fill colour of the redact tool."
+        },
+        "maxTickets": {
+          "type": "integer",
+          "description": "How many tickets to keep in My tickets (oldest are removed first)."
+        },
+        "keepScreenshots": {
+          "type": "boolean",
+          "description": "Keep the full screenshot with saved tickets. Off keeps only a small thumbnail."
+        },
+        "shareScreenshots": {
+          "type": "boolean",
+          "description": "Include screenshots when tickets are sent to the linked shared-data backend."
+        }
+      }
+    },
+    "brand": {
+      "type": "object",
+      "description": "Enforced brand kit fields (locked in Settings -> Branding).",
+      "properties": {
+        "companyName": {
+          "type": "string"
+        },
+        "productPrefix": {
+          "type": "string"
+        },
+        "logo": {
+          "type": "string"
+        },
+        "primary": {
+          "type": "string"
+        },
+        "accent": {
+          "type": "string"
+        },
+        "theme": {
+          "type": "string"
+        },
+        "radius": {
+          "type": "integer"
+        },
+        "supportUrl": {
+          "type": "string"
+        },
+        "supportEmail": {
+          "type": "string"
+        },
+        "footerText": {
+          "type": "string"
+        }
+      }
+    },
+    "connection": {
+      "type": "object",
+      "description": "Optional shared-data backend. type: none | webhook | rest | supabase.",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        },
+        "tablePrefix": {
+          "type": "string"
+        },
+        "autoSync": {
+          "type": "boolean"
+        }
+      }
+    },
+    "destination": {
+      "type": "string",
+      "description": "Where new tickets go: local (My tickets only), email, webhook, jira, zendesk, freshdesk or servicenow. Tickets are always kept in My tickets too."
+    },
+    "helpdeskEmail": {
+      "type": "string",
+      "description": "Help-desk address for the email destination. Empty uses the brand support email."
+    },
+    "webhookUrl": {
+      "type": "string",
+      "description": "URL that receives each ticket as JSON (POST), including the screenshot as base64."
+    },
+    "webhookToken": {
+      "type": "string",
+      "description": "Optional token sent as \"Authorization: Bearer <token>\" to the webhook."
+    },
+    "jiraSite": {
+      "type": "string",
+      "description": "Jira site, e.g. https://acme.atlassian.net"
+    },
+    "jiraEmail": {
+      "type": "string",
+      "description": "Atlassian account email used with the API token."
+    },
+    "jiraToken": {
+      "type": "string",
+      "description": "Atlassian API token."
+    },
+    "jiraServiceDeskId": {
+      "type": "string",
+      "description": "Jira Service Management service desk id. With a request type id, tickets are created as customer requests."
+    },
+    "jiraRequestTypeId": {
+      "type": "string",
+      "description": "Jira Service Management request type id."
+    },
+    "jiraProjectKey": {
+      "type": "string",
+      "description": "Jira project key, used when no service desk id is set (creates a plain issue)."
+    },
+    "jiraIssueType": {
+      "type": "string",
+      "description": "Issue type name for plain Jira issues, e.g. Task or Bug."
+    },
+    "zendeskSubdomain": {
+      "type": "string",
+      "description": "Zendesk subdomain (acme for acme.zendesk.com)."
+    },
+    "zendeskEmail": {
+      "type": "string",
+      "description": "Zendesk agent email used with the API token."
+    },
+    "zendeskToken": {
+      "type": "string",
+      "description": "Zendesk API token."
+    },
+    "freshdeskDomain": {
+      "type": "string",
+      "description": "Freshdesk domain (acme for acme.freshdesk.com)."
+    },
+    "freshdeskApiKey": {
+      "type": "string",
+      "description": "Freshdesk API key."
+    },
+    "servicenowInstance": {
+      "type": "string",
+      "description": "ServiceNow instance (acme for acme.service-now.com)."
+    },
+    "servicenowUser": {
+      "type": "string",
+      "description": "ServiceNow user name."
+    },
+    "servicenowPassword": {
+      "type": "string",
+      "description": "ServiceNow password."
+    },
+    "categories": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Categories offered in the ticket form."
+    },
+    "defaultPriority": {
+      "type": "string",
+      "description": "Priority preselected in the ticket form: low, normal, high or urgent."
+    },
+    "requiredFields": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Fields that must be filled: summary, description, category, requesterName, requesterEmail."
+    },
+    "requesterName": {
+      "type": "string",
+      "description": "Requester name prefilled in the ticket form."
+    },
+    "requesterEmail": {
+      "type": "string",
+      "description": "Requester email prefilled in the ticket form."
+    },
+    "rememberRequester": {
+      "type": "boolean",
+      "description": "Remember the name and email typed in the ticket form for next time."
+    },
+    "includeDiagnostics": {
+      "type": "boolean",
+      "description": "Attach browser and page diagnostics to new tickets by default."
+    },
+    "includeUrl": {
+      "type": "boolean",
+      "description": "Include the page URL (and failed request URLs) in diagnostics."
+    },
+    "redactColor": {
+      "type": "string",
+      "description": "Fill colour of the redact tool."
+    },
+    "maxTickets": {
+      "type": "integer",
+      "description": "How many tickets to keep in My tickets (oldest are removed first)."
+    },
+    "keepScreenshots": {
+      "type": "boolean",
+      "description": "Keep the full screenshot with saved tickets. Off keeps only a small thumbnail."
+    },
+    "shareScreenshots": {
+      "type": "boolean",
+      "description": "Include screenshots when tickets are sent to the linked shared-data backend."
+    }
+  }
+}

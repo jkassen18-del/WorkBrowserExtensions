@@ -1,0 +1,64 @@
+{
+  "manifest_version": 3,
+  "name": "Acme Data Leak Guard",
+  "short_name": "Leak Guard",
+  "version": "1.0.0",
+  "description": "Warns before card numbers, ID numbers, API keys and confidential text are pasted, dropped, sent or uploaded to AI chatbots, personal email and file-sharing sites. Nothing leaves your browser.",
+  "permissions": [
+    "storage",
+    "unlimitedStorage",
+    "activeTab",
+    "alarms"
+  ],
+  "optional_host_permissions": [
+    "https://*/*",
+    "http://*/*"
+  ],
+  "background": {
+    "type": "module",
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "Acme Data Leak Guard",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content/sites.js",
+        "content/detectors.js",
+        "content/guard.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true,
+      "match_about_blank": true
+    }
+  ],
+  "author": "Acme Inc.",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "dlp-guard@acme.example",
+      "strict_min_version": "128.0"
+    }
+  }
+}

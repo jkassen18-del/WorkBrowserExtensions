@@ -1,0 +1,24 @@
+.ts-capture { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
+.ts-capture .btn { justify-content: flex-start; padding: 10px 12px; }
+.ts-capture .btn svg { width: 18px; height: 18px; flex: none; }
+.ts-capture .btn .ts-kbd { margin-left: auto; opacity: 0.85; font-weight: 500; font-size: 12px; }
+.ts-capture .btn.primary kbd { background: rgba(255, 255, 255, 0.18); border-color: rgba(255, 255, 255, 0.35); color: inherit; }
+.ts-section-head { display: flex; align-items: baseline; justify-content: space-between; margin: 4px 0 6px; }
+.ts-section-head h3 { margin: 0; font-size: 13px; }
+.ts-recent { list-style: none; margin: 0; padding: 0; }
+.ts-recent li button {
+  display: flex; align-items: center; gap: 10px; width: 100%; padding: 6px; margin: 0 -6px; border: 0; border-radius: 8px;
+  background: transparent; color: inherit; font: inherit; text-align: left; cursor: pointer; width: calc(100% + 12px);
+}
+.ts-recent li button:hover { background: var(--wx-surface-2); }
+.ts-recent img, .ts-recent .ts-noimg {
+  width: 52px; height: 34px; object-fit: cover; object-position: top left; border-radius: 4px; flex: none;
+  border: 1px solid var(--wx-border); background: var(--wx-surface-2);
+}
+.ts-recent .ts-noimg { display: grid; place-items: center; color: var(--wx-muted); }
+.ts-recent .ts-noimg svg { width: 16px; height: 16px; }
+.ts-recent .ts-sum { font-weight: 550; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ts-recent .ts-meta { font-size: 11.5px; color: var(--wx-muted); display: flex; gap: 6px; align-items: center; }
+.ts-recent .badge { font-size: 10.5px; padding: 0 6px; }
+.ts-popup-empty { padding: 14px 8px; text-align: center; color: var(--wx-muted); font-size: 12.5px; }
+.ts-error { margin-top: 8px; font-size: 12.5px; }

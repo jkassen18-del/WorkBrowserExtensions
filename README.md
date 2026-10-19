@@ -15,7 +15,19 @@ or webhook under **Settings → Shared data**. Until then, nothing leaves the br
 | **Shift Clock** | Clock in, log breaks and smoke breaks, clock out. It tracks 9-hour shifts against a 160-hour month (over/under, hours needed per day), notifies you 30 minutes before home time, and keeps your standby rota with a call/ticket log. A GitHub-style heatmap shows your history. Optional laptop activity minutes. | [shift-clock/](browser-extensions/shift-clock/) |
 | **Go-Links** | Type `go/payroll`, `go/vpn` or `go/jira/ABC-123` in the address bar. Add your own links in seconds. A searchable directory doubles as an onboarding hub. Shared link lists are optional. | [go-links/](browser-extensions/go-links/) |
 
-## Quick start
+## Quick start (no build needed)
+
+Pre-built copies of every extension are committed in [`ready-to-load/`](ready-to-load/):
+
+1. Download the repo (**Code → Download ZIP**) and unzip it.
+2. Open `edge://extensions` or `chrome://extensions` and turn on **Developer mode**.
+3. Click **Load unpacked** and pick a folder such as `ready-to-load/edge-chrome/shift-clock`
+   (Firefox: **Load Temporary Add-on…** → `ready-to-load/firefox/<extension>/manifest.json`).
+4. Pin it from the puzzle-piece menu in the toolbar.
+
+Don't load the folders under `browser-extensions/` directly. They are the source and need the build step below.
+
+## Building from source
 
 Requires Node 18+. You don't need `npm install`: the build has no dependencies.
 
@@ -24,7 +36,7 @@ cd browser-extensions
 npm run build          # builds all 6 extensions for chrome, edge and firefox
 ```
 
-Then load an unpacked build:
+Then load an unpacked build (or run `npm run ready` to refresh `ready-to-load/`; `npm run check` fails when it is out of date):
 
 | Browser | How |
 | --- | --- |
@@ -117,6 +129,7 @@ browser-extensions/
 ├── tools/
 │   ├── build.mjs          builds dist/<browser>/<extension> + zips, generates brand icons and schema.json
 │   ├── check.mjs          syntax check + full build with reference validation (npm run check)
+│   ├── ready.mjs          writes the committed ../ready-to-load/ builds (npm run ready)
 │   └── screenshot.mjs     headless Chromium screenshots of any extension page (needs Playwright)
 └── dist/                  build output (git-ignored)
 ```

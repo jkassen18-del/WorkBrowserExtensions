@@ -1,0 +1,320 @@
+{
+  "type": "object",
+  "properties": {
+    "defaults": {
+      "type": "object",
+      "description": "Suggested values the user can change. Same keys as the enforced settings.",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "description": "Master switch. When off, no labels are shown anywhere."
+        },
+        "rules": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "pattern": {
+                "type": "string"
+              },
+              "env": {
+                "type": "string"
+              },
+              "label": {
+                "type": "string"
+              },
+              "enabled": {
+                "type": "boolean"
+              }
+            }
+          },
+          "description": "Ordered list of rules { id, pattern, env, label, enabled }. First match wins. Pattern: exact host, *.wildcard host, host:port, URL prefix (https://x.com/admin*), host/path, or /regex/."
+        },
+        "environments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "short": {
+                "type": "string"
+              },
+              "color": {
+                "type": "string"
+              },
+              "textColor": {
+                "type": "string"
+              },
+              "confirmSubmit": {
+                "type": "boolean"
+              },
+              "ribbon": {
+                "type": "boolean"
+              },
+              "titlePrefix": {
+                "type": "boolean"
+              },
+              "favicon": {
+                "type": "boolean"
+              },
+              "badge": {
+                "type": "boolean"
+              }
+            }
+          },
+          "description": "Environments { id, name, short, color, textColor (\"\" = automatic), confirmSubmit, ribbon, titlePrefix, favicon, badge }."
+        },
+        "style": {
+          "type": "string",
+          "description": "Page indicator style: ribbon (corner ribbon), bar (full-width bar) or frame (coloured border around the page)."
+        },
+        "position": {
+          "type": "string",
+          "description": "Corner for the ribbon or frame tag: top-left, top-right, bottom-left, bottom-right. The bar uses the top or bottom edge."
+        },
+        "size": {
+          "type": "string",
+          "description": "Indicator size: small, medium or large."
+        },
+        "opacity": {
+          "type": "integer",
+          "description": "Indicator opacity in percent (30-100)."
+        },
+        "titleFormat": {
+          "type": "string",
+          "description": "Text put in front of the tab title. Placeholders: {short}, {name}, {label}."
+        },
+        "hideSeconds": {
+          "type": "integer",
+          "description": "Clicking the indicator hides it for this many seconds (0 = until the page is reloaded)."
+        },
+        "showRibbon": {
+          "type": "boolean",
+          "description": "Show the page indicator (ribbon, bar or frame)."
+        },
+        "showTitlePrefix": {
+          "type": "boolean",
+          "description": "Add the environment prefix to tab titles."
+        },
+        "showFavicon": {
+          "type": "boolean",
+          "description": "Tint the site favicon with the environment colour."
+        },
+        "showBadge": {
+          "type": "boolean",
+          "description": "Show the environment on the toolbar icon badge."
+        },
+        "confirmSubmit": {
+          "type": "boolean",
+          "description": "Ask \"Are you sure?\" before submitting forms on environments that have confirmation turned on."
+        },
+        "ruleSources": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "URLs of JSON rule files ({ environments: [...], rules: [...] }) merged after the local rules."
+        },
+        "remoteRefreshHours": {
+          "type": "integer",
+          "description": "How often remote rule files are fetched again (hours, 0 = only on demand)."
+        },
+        "shareRules": {
+          "type": "boolean",
+          "description": "Push your own rules to the linked shared backend (Settings -> Shared data) when syncing."
+        }
+      }
+    },
+    "brand": {
+      "type": "object",
+      "description": "Enforced brand kit fields (locked in Settings -> Branding).",
+      "properties": {
+        "companyName": {
+          "type": "string"
+        },
+        "productPrefix": {
+          "type": "string"
+        },
+        "logo": {
+          "type": "string"
+        },
+        "primary": {
+          "type": "string"
+        },
+        "accent": {
+          "type": "string"
+        },
+        "theme": {
+          "type": "string"
+        },
+        "radius": {
+          "type": "integer"
+        },
+        "supportUrl": {
+          "type": "string"
+        },
+        "supportEmail": {
+          "type": "string"
+        },
+        "footerText": {
+          "type": "string"
+        }
+      }
+    },
+    "connection": {
+      "type": "object",
+      "description": "Optional shared-data backend. type: none | webhook | rest | supabase.",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        },
+        "tablePrefix": {
+          "type": "string"
+        },
+        "autoSync": {
+          "type": "boolean"
+        }
+      }
+    },
+    "enabled": {
+      "type": "boolean",
+      "description": "Master switch. When off, no labels are shown anywhere."
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "pattern": {
+            "type": "string"
+          },
+          "env": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "enabled": {
+            "type": "boolean"
+          }
+        }
+      },
+      "description": "Ordered list of rules { id, pattern, env, label, enabled }. First match wins. Pattern: exact host, *.wildcard host, host:port, URL prefix (https://x.com/admin*), host/path, or /regex/."
+    },
+    "environments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "short": {
+            "type": "string"
+          },
+          "color": {
+            "type": "string"
+          },
+          "textColor": {
+            "type": "string"
+          },
+          "confirmSubmit": {
+            "type": "boolean"
+          },
+          "ribbon": {
+            "type": "boolean"
+          },
+          "titlePrefix": {
+            "type": "boolean"
+          },
+          "favicon": {
+            "type": "boolean"
+          },
+          "badge": {
+            "type": "boolean"
+          }
+        }
+      },
+      "description": "Environments { id, name, short, color, textColor (\"\" = automatic), confirmSubmit, ribbon, titlePrefix, favicon, badge }."
+    },
+    "style": {
+      "type": "string",
+      "description": "Page indicator style: ribbon (corner ribbon), bar (full-width bar) or frame (coloured border around the page)."
+    },
+    "position": {
+      "type": "string",
+      "description": "Corner for the ribbon or frame tag: top-left, top-right, bottom-left, bottom-right. The bar uses the top or bottom edge."
+    },
+    "size": {
+      "type": "string",
+      "description": "Indicator size: small, medium or large."
+    },
+    "opacity": {
+      "type": "integer",
+      "description": "Indicator opacity in percent (30-100)."
+    },
+    "titleFormat": {
+      "type": "string",
+      "description": "Text put in front of the tab title. Placeholders: {short}, {name}, {label}."
+    },
+    "hideSeconds": {
+      "type": "integer",
+      "description": "Clicking the indicator hides it for this many seconds (0 = until the page is reloaded)."
+    },
+    "showRibbon": {
+      "type": "boolean",
+      "description": "Show the page indicator (ribbon, bar or frame)."
+    },
+    "showTitlePrefix": {
+      "type": "boolean",
+      "description": "Add the environment prefix to tab titles."
+    },
+    "showFavicon": {
+      "type": "boolean",
+      "description": "Tint the site favicon with the environment colour."
+    },
+    "showBadge": {
+      "type": "boolean",
+      "description": "Show the environment on the toolbar icon badge."
+    },
+    "confirmSubmit": {
+      "type": "boolean",
+      "description": "Ask \"Are you sure?\" before submitting forms on environments that have confirmation turned on."
+    },
+    "ruleSources": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "URLs of JSON rule files ({ environments: [...], rules: [...] }) merged after the local rules."
+    },
+    "remoteRefreshHours": {
+      "type": "integer",
+      "description": "How often remote rule files are fetched again (hours, 0 = only on demand)."
+    },
+    "shareRules": {
+      "type": "boolean",
+      "description": "Push your own rules to the linked shared backend (Settings -> Shared data) when syncing."
+    }
+  }
+}

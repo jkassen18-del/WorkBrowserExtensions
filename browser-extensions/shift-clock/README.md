@@ -34,7 +34,8 @@ in this browser (`storage.local`). Nothing is sent anywhere unless your team lin
 
 ## Using it with no setup
 
-1. Load the extension (see the top-level README) and pin the clock icon to the toolbar.
+1. In `edge://extensions` or `chrome://extensions`, turn on Developer mode, click **Load unpacked** and pick
+   `ready-to-load/edge-chrome/shift-clock`. Then pin the clock icon to the toolbar.
 2. Press **Clock in**. Use the break buttons through the day and **Clock out** when you leave.
 3. Optional: open **Settings → Standby** and set the first day of one of your standby weeks.
 4. Optional: open **Settings → Schedule** to change the shift length, the included breaks, work days or the monthly target.

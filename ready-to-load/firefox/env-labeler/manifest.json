@@ -1,0 +1,63 @@
+{
+  "manifest_version": 3,
+  "name": "Acme Environment Labeler",
+  "version": "1.0.0",
+  "description": "Makes production, staging and development tabs impossible to mix up: coloured ribbon, tab title prefix, favicon tint, toolbar badge and a check before submitting forms on production.",
+  "permissions": [
+    "storage",
+    "unlimitedStorage",
+    "alarms",
+    "activeTab",
+    "scripting"
+  ],
+  "optional_host_permissions": [
+    "https://*/*",
+    "http://*/*"
+  ],
+  "background": {
+    "type": "module",
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png"
+    },
+    "default_title": "Acme Environment Labeler"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content/indicator.js",
+        "content/content.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": false
+    }
+  ],
+  "short_name": "Environment ",
+  "author": "Acme Inc.",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "env-labeler@acme.example",
+      "strict_min_version": "128.0"
+    }
+  }
+}

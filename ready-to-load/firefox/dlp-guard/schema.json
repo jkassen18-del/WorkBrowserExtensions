@@ -1,0 +1,548 @@
+{
+  "type": "object",
+  "properties": {
+    "defaults": {
+      "type": "object",
+      "description": "Suggested values the user can change. Same keys as the enforced settings.",
+      "properties": {
+        "enabled": {
+          "type": "boolean",
+          "description": "Turns Data Leak Guard on or off."
+        },
+        "categoryModes": {
+          "type": "object",
+          "properties": {
+            "ai": {
+              "type": "string"
+            },
+            "email": {
+              "type": "string"
+            },
+            "files": {
+              "type": "string"
+            },
+            "social": {
+              "type": "string"
+            },
+            "other": {
+              "type": "string"
+            }
+          },
+          "description": "Mode per site category (ai, email, files, social, other): off, monitor, warn or block."
+        },
+        "aiSites": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "AI chatbot sites. Entries match the host and its subdomains; \"host/path\" also matches a path prefix."
+        },
+        "emailSites": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Personal email sites."
+        },
+        "fileSites": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "File sharing and paste sites."
+        },
+        "socialSites": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Social and messaging sites."
+        },
+        "approvedSites": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Approved sites (for example your company domains). They are never checked."
+        },
+        "detectors": {
+          "type": "object",
+          "properties": {
+            "card": {
+              "type": "object",
+              "properties": {
+                "enabled": {
+                  "type": "boolean"
+                },
+                "mode": {
+                  "type": "string"
+                }
+              }
+            },
+            "ssn": {
+              "type": "object",
+              "properties": {
+                "enabled": {
+                  "type": "boolean"
+                },
+                "mode": {
+                  "type": "string"
+                }
+              }
+            },
+            "nino": {
+              "type": "object",
+              "properties": {
+                "enabled": {
+                  "type": "boolean"
+                },
+                "mode": {
+                  "type": "string"
+                }
+              }
+            },
+            "sin": {
+              "type": "object",
+              "properties": {
+                "enabled": {
+                  "type": "boolean"
+                },
+                "mode": {
+                  "type": "string"
+                }
+              }
+            },
+            "iban": {
+              "type": "object",
+              "properties": {
+                "enabled": {
+                  "type": "boolean"
+                },
+                "mode": {
+                  "type": "string"
+                }
+              }
+            },
+            "secrets": {
+              "type": "object",
+              "properties": {
+                "enabled": {
+                  "type": "boolean"
+                },
+                "mode": {
+                  "type": "string"
+                }
+              }
+            },
+            "markers": {
+              "type": "object",
+              "properties": {
+                "enabled": {
+                  "type": "boolean"
+                },
+                "mode": {
+                  "type": "string"
+                }
+              }
+            },
+            "emails": {
+              "type": "object",
+              "properties": {
+                "enabled": {
+                  "type": "boolean"
+                },
+                "mode": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "description": "Per detector: enabled (true/false) and mode: site (use the site mode), warn (at least warn) or block (always block)."
+        },
+        "markers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Confidentiality phrases to look for (case-insensitive)."
+        },
+        "emailThreshold": {
+          "type": "integer",
+          "description": "Flag text that contains at least this many different email addresses."
+        },
+        "customPatterns": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "pattern": {
+                "type": "string"
+              },
+              "flags": {
+                "type": "string"
+              },
+              "mode": {
+                "type": "string"
+              },
+              "enabled": {
+                "type": "boolean"
+              }
+            }
+          },
+          "description": "Custom patterns: [{ id, name, pattern (regex), flags, mode (site|warn|block), enabled }]."
+        },
+        "checkPaste": {
+          "type": "boolean",
+          "description": "Check text and files that are pasted."
+        },
+        "checkDrop": {
+          "type": "boolean",
+          "description": "Check text and files that are dragged and dropped."
+        },
+        "checkUploads": {
+          "type": "boolean",
+          "description": "Check files chosen in upload fields."
+        },
+        "checkSubmit": {
+          "type": "boolean",
+          "description": "Check forms when they are submitted."
+        },
+        "checkTyped": {
+          "type": "boolean",
+          "description": "Check chat boxes when a message is sent with Enter or the send button."
+        },
+        "scanFileContents": {
+          "type": "boolean",
+          "description": "Read text-like files (txt, csv, json, env, pem...) and scan their content."
+        },
+        "maxFileSizeMB": {
+          "type": "integer",
+          "description": "Largest file whose content is scanned, in MB."
+        },
+        "requireJustification": {
+          "type": "boolean",
+          "description": "Require a reason before the user can continue past a warning."
+        },
+        "dialogMessage": {
+          "type": "string",
+          "description": "Extra text shown in the warning dialog (for example a link to the data policy)."
+        },
+        "allowPause": {
+          "type": "boolean",
+          "description": "Allow users to pause protection for 15 minutes from the toolbar popup."
+        },
+        "maxIncidents": {
+          "type": "integer",
+          "description": "How many incidents to keep in this browser."
+        },
+        "reportIncidents": {
+          "type": "boolean",
+          "description": "Send incident metadata (never the content) to the linked shared-data backend."
+        }
+      }
+    },
+    "brand": {
+      "type": "object",
+      "description": "Enforced brand kit fields (locked in Settings -> Branding).",
+      "properties": {
+        "companyName": {
+          "type": "string"
+        },
+        "productPrefix": {
+          "type": "string"
+        },
+        "logo": {
+          "type": "string"
+        },
+        "primary": {
+          "type": "string"
+        },
+        "accent": {
+          "type": "string"
+        },
+        "theme": {
+          "type": "string"
+        },
+        "radius": {
+          "type": "integer"
+        },
+        "supportUrl": {
+          "type": "string"
+        },
+        "supportEmail": {
+          "type": "string"
+        },
+        "footerText": {
+          "type": "string"
+        }
+      }
+    },
+    "connection": {
+      "type": "object",
+      "description": "Optional shared-data backend. type: none | webhook | rest | supabase.",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        },
+        "tablePrefix": {
+          "type": "string"
+        },
+        "autoSync": {
+          "type": "boolean"
+        }
+      }
+    },
+    "enabled": {
+      "type": "boolean",
+      "description": "Turns Data Leak Guard on or off."
+    },
+    "categoryModes": {
+      "type": "object",
+      "properties": {
+        "ai": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "files": {
+          "type": "string"
+        },
+        "social": {
+          "type": "string"
+        },
+        "other": {
+          "type": "string"
+        }
+      },
+      "description": "Mode per site category (ai, email, files, social, other): off, monitor, warn or block."
+    },
+    "aiSites": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "AI chatbot sites. Entries match the host and its subdomains; \"host/path\" also matches a path prefix."
+    },
+    "emailSites": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Personal email sites."
+    },
+    "fileSites": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "File sharing and paste sites."
+    },
+    "socialSites": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Social and messaging sites."
+    },
+    "approvedSites": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Approved sites (for example your company domains). They are never checked."
+    },
+    "detectors": {
+      "type": "object",
+      "properties": {
+        "card": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "mode": {
+              "type": "string"
+            }
+          }
+        },
+        "ssn": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "mode": {
+              "type": "string"
+            }
+          }
+        },
+        "nino": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "mode": {
+              "type": "string"
+            }
+          }
+        },
+        "sin": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "mode": {
+              "type": "string"
+            }
+          }
+        },
+        "iban": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "mode": {
+              "type": "string"
+            }
+          }
+        },
+        "secrets": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "mode": {
+              "type": "string"
+            }
+          }
+        },
+        "markers": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "mode": {
+              "type": "string"
+            }
+          }
+        },
+        "emails": {
+          "type": "object",
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "mode": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "description": "Per detector: enabled (true/false) and mode: site (use the site mode), warn (at least warn) or block (always block)."
+    },
+    "markers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Confidentiality phrases to look for (case-insensitive)."
+    },
+    "emailThreshold": {
+      "type": "integer",
+      "description": "Flag text that contains at least this many different email addresses."
+    },
+    "customPatterns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "pattern": {
+            "type": "string"
+          },
+          "flags": {
+            "type": "string"
+          },
+          "mode": {
+            "type": "string"
+          },
+          "enabled": {
+            "type": "boolean"
+          }
+        }
+      },
+      "description": "Custom patterns: [{ id, name, pattern (regex), flags, mode (site|warn|block), enabled }]."
+    },
+    "checkPaste": {
+      "type": "boolean",
+      "description": "Check text and files that are pasted."
+    },
+    "checkDrop": {
+      "type": "boolean",
+      "description": "Check text and files that are dragged and dropped."
+    },
+    "checkUploads": {
+      "type": "boolean",
+      "description": "Check files chosen in upload fields."
+    },
+    "checkSubmit": {
+      "type": "boolean",
+      "description": "Check forms when they are submitted."
+    },
+    "checkTyped": {
+      "type": "boolean",
+      "description": "Check chat boxes when a message is sent with Enter or the send button."
+    },
+    "scanFileContents": {
+      "type": "boolean",
+      "description": "Read text-like files (txt, csv, json, env, pem...) and scan their content."
+    },
+    "maxFileSizeMB": {
+      "type": "integer",
+      "description": "Largest file whose content is scanned, in MB."
+    },
+    "requireJustification": {
+      "type": "boolean",
+      "description": "Require a reason before the user can continue past a warning."
+    },
+    "dialogMessage": {
+      "type": "string",
+      "description": "Extra text shown in the warning dialog (for example a link to the data policy)."
+    },
+    "allowPause": {
+      "type": "boolean",
+      "description": "Allow users to pause protection for 15 minutes from the toolbar popup."
+    },
+    "maxIncidents": {
+      "type": "integer",
+      "description": "How many incidents to keep in this browser."
+    },
+    "reportIncidents": {
+      "type": "boolean",
+      "description": "Send incident metadata (never the content) to the linked shared-data backend."
+    }
+  }
+}

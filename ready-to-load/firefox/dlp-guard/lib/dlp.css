@@ -1,0 +1,42 @@
+/* Data Leak Guard page styles (on top of /shared/ui.css). */
+.dlp-site { padding: 12px 14px; margin-bottom: 0; }
+.dlp-site-host { font-weight: 650; font-size: 15px; word-break: break-all; }
+.dlp-site p { margin: 6px 0 0; }
+.dlp-mini-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.dlp-mini { background: var(--wx-surface); border: 1px solid var(--wx-border); border-radius: calc(var(--wx-radius) * 0.7); padding: 8px 6px; text-align: center; }
+.dlp-mini-value { font-size: 20px; font-weight: 700; line-height: 1.2; }
+.dlp-mini-value.warn { color: var(--wx-warn); }
+.dlp-mini-value.danger { color: var(--wx-danger); }
+.dlp-mini-value.primary { color: var(--wx-primary); }
+.dlp-mini-label { font-size: 11.5px; color: var(--wx-muted); }
+
+.dlp-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 16px; }
+.dlp-stats .card { margin: 0; }
+.dlp-stats .stat-value.warn { color: var(--wx-warn); }
+.dlp-stats .stat-value.danger { color: var(--wx-danger); }
+.dlp-stats .stat-value.primary { color: var(--wx-primary); }
+@media (max-width: 760px) { .dlp-stats { grid-template-columns: repeat(2, 1fr); } }
+
+.dlp-filters { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; align-items: end; }
+.dlp-filters .field { margin: 0; }
+@media (max-width: 860px) { .dlp-filters { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+.dlp-det { display: flex; flex-wrap: wrap; gap: 4px; }
+.dlp-nowrap { white-space: nowrap; }
+.dlp-mono { font-family: var(--wx-mono); font-size: 12.5px; word-break: break-all; }
+.dlp-cat { display: grid; grid-template-columns: 1fr 200px; gap: 16px; align-items: start; }
+.dlp-cat textarea { font-family: var(--wx-mono); font-size: 12.5px; }
+@media (max-width: 760px) { .dlp-cat { grid-template-columns: 1fr; } }
+
+.dlp-detector { display: grid; grid-template-columns: auto 1fr 210px; gap: 14px; align-items: center; padding: 12px 0; border-top: 1px solid var(--wx-border); }
+.dlp-detector:first-of-type { border-top: 0; }
+.dlp-detector select { margin: 0; }
+@media (max-width: 760px) { .dlp-detector { grid-template-columns: auto 1fr; } .dlp-detector select { grid-column: 1 / -1; } }
+
+.dlp-finding { border: 1px solid var(--wx-border); border-radius: calc(var(--wx-radius) * 0.7); padding: 10px 12px; margin-bottom: 8px; background: var(--wx-surface); }
+.dlp-finding code { background: var(--wx-surface-2); padding: 1px 6px; border-radius: 4px; margin-right: 6px; }
+.dlp-highlight { white-space: pre-wrap; word-break: break-word; background: var(--wx-surface-2); border-radius: 8px; padding: 10px; max-height: 160px; overflow: auto; font-family: var(--wx-mono); font-size: 12.5px; }
+.dlp-highlight mark { background: rgba(217, 119, 6, 0.35); color: inherit; border-radius: 3px; }
+.dlp-test-area { min-height: 220px; font-family: var(--wx-mono); font-size: 13px; }
+.dlp-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.dlp-chips .btn { font-weight: 500; }

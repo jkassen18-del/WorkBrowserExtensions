@@ -7,6 +7,7 @@ import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { build } from './build.mjs';
 import { walk } from './lib.mjs';
+import { writeReady } from './ready.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const onlyIdx = process.argv.indexOf('--only');
@@ -95,6 +96,23 @@ for (const { ext, browser, dir, manifest: m } of results) {
 }
 
 fs.rmSync(path.join(ROOT, CHECK_OUT), { recursive: true, force: true });
+
+// 4. The committed ready-to-load/ folders must match the source (people install from them directly).
+if (!only) {
+  const committed = path.resolve(ROOT, '..', 'ready-to-load');
+  const fresh = path.join(ROOT, `dist/.ready-${process.pid}`);
+  await writeReady(fresh, { quiet: true });
+  const list = (dir) => (fs.existsSync(dir) ? walk(dir).map((f) => path.relative(dir, f)).filter((f) => !f.endsWith('README.md')).sort() : []);
+  const a = list(committed);
+  const b = list(fresh);
+  const stale = b.filter((f) => !a.includes(f) || !fs.readFileSync(path.join(committed, f)).equals(fs.readFileSync(path.join(fresh, f))));
+  const extra = a.filter((f) => !b.includes(f));
+  if (stale.length || extra.length) {
+    err(`ready-to-load/ is out of date (${stale.length + extra.length} file(s), e.g. ${[...stale, ...extra][0]}). Run: npm run ready`);
+  }
+  fs.rmSync(fresh, { recursive: true, force: true });
+}
+
 if (errors.length) {
   console.error(`\n✗ ${errors.length} problem(s):\n- ${errors.join('\n- ')}`);
   process.exit(1);

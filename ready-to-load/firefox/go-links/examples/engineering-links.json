@@ -1,0 +1,15 @@
+{
+  "name": "Engineering",
+  "links": [
+    { "name": "jira", "url": "https://acme.atlassian.net/browse/%s", "title": "Jira", "description": "Open a ticket: go/jira/ABC-123", "tags": ["engineering", "tickets"], "aliases": ["ticket"] },
+    { "name": "wiki", "url": "https://acme.atlassian.net/wiki", "title": "Engineering wiki", "description": "Architecture, runbooks and team pages. go/wiki/spaces/ENG works too.", "tags": ["engineering", "docs", "onboarding"] },
+    { "name": "gh", "url": "https://github.com/acme/{1}", "title": "GitHub repositories", "description": "go/gh/website opens a repository.", "tags": ["engineering", "code"], "aliases": ["github", "repo"] },
+    { "name": "pr", "url": "https://github.com/acme/{1}/pull/{2}", "title": "Pull request", "description": "go/pr/website/42", "tags": ["engineering", "code"] },
+    { "name": "ci", "url": "https://github.com/acme/{1}/actions", "title": "CI builds", "tags": ["engineering"] },
+    { "name": "oncall", "url": "https://acme.pagerduty.com/schedules", "title": "On-call schedule", "description": "Who is on call right now.", "tags": ["engineering", "incidents"] },
+    { "name": "status", "url": "https://status.example.com", "title": "Status page", "tags": ["engineering", "incidents"] },
+    { "name": "dashboards", "url": "https://grafana.example.com/dashboards", "title": "Dashboards", "description": "Service metrics and SLOs.", "tags": ["engineering", "monitoring"], "aliases": ["grafana"] },
+    { "name": "docs", "url": "https://docs.example.com", "title": "Developer docs", "description": "go/docs/setup opens the setup guide.", "tags": ["engineering", "docs", "onboarding"] },
+    { "name": "devsetup", "url": "https://docs.example.com/setup", "title": "Laptop setup for engineers", "description": "Tools, access and your first commit.", "tags": ["engineering", "onboarding"] }
+  ]
+}

@@ -8,6 +8,7 @@
   "scripts": {
     "build": "node tools/build.mjs",
     "check": "node tools/check.mjs",
-    "screenshot": "node tools/screenshot.mjs"
+    "screenshot": "node tools/screenshot.mjs",
+    "ready": "node tools/ready.mjs"
   }
 }

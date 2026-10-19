@@ -252,3 +252,6 @@ body.popup { width: 360px; min-height: 120px; }
 /* ---- Brand preview ---- */
 .brand-preview { border: 1px solid var(--wx-border); border-radius: var(--wx-radius); overflow: hidden; }
 .swatch { width: 26px; height: 26px; border-radius: 50%; border: 2px solid var(--wx-surface); box-shadow: 0 0 0 1px var(--wx-border); cursor: pointer; padding: 0; }
+
+/* Shown only when an unbuilt source folder is loaded (this stylesheet is missing there). */
+#wrong-folder { display: none !important; }

@@ -1,0 +1,13 @@
+{
+  "companyName": "Acme Inc.",
+  "productPrefix": "Acme",
+  "logo": "logo.svg",
+  "primary": "#4F46E5",
+  "accent": "#0EA5E9",
+  "theme": "auto",
+  "radius": 10,
+  "supportUrl": "",
+  "supportEmail": "",
+  "footerText": "Managed by Acme IT",
+  "extensionIdDomain": "acme.example"
+}

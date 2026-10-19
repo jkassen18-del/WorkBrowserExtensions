@@ -1,0 +1,16 @@
+{
+  "name": "Company",
+  "links": [
+    { "name": "payroll", "url": "https://payroll.example.com", "title": "Payroll portal", "description": "Payslips, tax forms and bank details.", "tags": ["hr", "money"], "aliases": ["pay", "payslip"] },
+    { "name": "benefits", "url": "https://benefits.example.com", "title": "Benefits", "description": "Health insurance, pension and perks.", "tags": ["hr", "onboarding"] },
+    { "name": "holidays", "url": "https://hr.example.com/time-off", "title": "Holidays and time off", "description": "Book leave and see the public holiday calendar.", "tags": ["hr"], "aliases": ["pto", "leave", "vacation"] },
+    { "name": "expenses", "url": "https://expenses.example.com", "title": "Expenses", "description": "Submit receipts and track reimbursements.", "tags": ["finance", "money"] },
+    { "name": "it-help", "url": "https://helpdesk.example.com", "title": "IT help desk", "description": "Raise a ticket, reset your password, request hardware.", "tags": ["it", "onboarding"], "aliases": ["help", "helpdesk"] },
+    { "name": "vpn", "url": "https://vpn.example.com", "title": "VPN setup", "description": "Download the VPN client and connect from home.", "tags": ["it", "onboarding"] },
+    { "name": "onboarding", "url": "https://intranet.example.com/welcome", "title": "Welcome to the company", "description": "Your first week checklist.", "tags": ["onboarding"], "aliases": ["welcome", "start"] },
+    { "name": "people", "url": "https://directory.example.com/search?q=%s", "title": "People directory", "description": "Find a colleague: go/people/jane", "tags": ["onboarding"] },
+    { "name": "handbook", "url": "https://intranet.example.com/handbook", "title": "Employee handbook", "description": "Policies, code of conduct and how we work.", "tags": ["hr", "onboarding"] },
+    { "name": "security", "url": "https://intranet.example.com/security", "title": "Security and phishing", "description": "Report phishing and read the security policy.", "tags": ["it"] },
+    { "name": "travel", "url": "https://travel.example.com", "title": "Travel booking", "description": "Book flights and hotels within policy.", "tags": ["finance"] }
+  ]
+}
