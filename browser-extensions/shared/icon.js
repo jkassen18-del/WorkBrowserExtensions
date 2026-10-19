@@ -37,6 +37,13 @@ const GLYPHS = {
     { t: 'rrect', x: 0.52, y: 0.43, w: 0.24, h: 0.14, r: 0.07, cut: true },
     { t: 'rrect', x: 0.36, y: 0.47, w: 0.28, h: 0.06, r: 0.03 },
   ],
+  // Shift Clock: clock face
+  clock: [
+    { t: 'circle', x: 0.5, y: 0.5, r: 0.31 },
+    { t: 'circle', x: 0.5, y: 0.5, r: 0.235, cut: true },
+    { t: 'line', x1: 0.5, y1: 0.5, x2: 0.5, y2: 0.34, w: 0.065 },
+    { t: 'line', x1: 0.5, y1: 0.5, x2: 0.62, y2: 0.56, w: 0.065 },
+  ],
 };
 
 export const GLYPH_NAMES = Object.keys(GLYPHS);

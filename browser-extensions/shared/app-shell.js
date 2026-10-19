@@ -132,6 +132,7 @@ export async function mountApp(o) {
   }
 
   async function show(id, force = false) {
+    id = String(id || '').split('?')[0]; // "#panel?x=y" deep links: the page reads the query itself
     if (id === 'welcome') return showWelcome();
     const panel = all.find((p) => p.id === id) || all[0];
     if (current === panel.id && !force) return;

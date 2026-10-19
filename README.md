@@ -1,6 +1,6 @@
 # Workplace browser extensions
 
-Five branded extensions for Chrome, Edge and Firefox, built from one Manifest V3 codebase.
+Six branded extensions for Chrome, Edge and Firefox, built from one Manifest V3 codebase.
 
 **Plug and play.** Load an extension, open it and add your own links, rules and settings. You don't need a server, an account or any setup.
 Everything is stored in your browser, for you only. When a team later wants shared data, link a database
@@ -12,6 +12,7 @@ or webhook under **Settings → Shared data**. Until then, nothing leaves the br
 | **Data Leak Guard** | Detects card numbers, national ID numbers, secrets/API keys, "Confidential" markers and custom patterns when they are pasted, dropped, uploaded or submitted to unapproved sites (AI chatbots, personal email, file sharing). It then warns or blocks. Content never leaves the browser. | [dlp-guard/](browser-extensions/dlp-guard/) |
 | **SaaS Usage Reporter** | Records which SaaS apps you use (by domain only) against a catalog of about 330 apps. A dashboard shows approved, unapproved and unused-licence apps. Reporting anonymous totals is optional. | [saas-reporter/](browser-extensions/saas-reporter/) |
 | **Environment Labeler** | Red/amber/green ribbons, tinted favicons, title prefixes, toolbar badges and an "are you sure?" before you submit forms on production. Works on localhost right away. You can label any site from the popup. | [env-labeler/](browser-extensions/env-labeler/) |
+| **Shift Clock** | Clock in, log breaks and smoke breaks, clock out. It tracks 9-hour shifts against a 160-hour month (over/under, hours needed per day), notifies you 30 minutes before home time, and keeps your standby rota with a call/ticket log. A GitHub-style heatmap shows your history. Optional laptop activity minutes. | [shift-clock/](browser-extensions/shift-clock/) |
 | **Go-Links** | Type `go/payroll`, `go/vpn` or `go/jira/ABC-123` in the address bar. Add your own links in seconds. A searchable directory doubles as an onboarding hub. Shared link lists are optional. | [go-links/](browser-extensions/go-links/) |
 
 ## Quick start
@@ -20,7 +21,7 @@ Requires Node 18+. You don't need `npm install`: the build has no dependencies.
 
 ```bash
 cd browser-extensions
-npm run build          # builds all 5 extensions for chrome, edge and firefox
+npm run build          # builds all 6 extensions for chrome, edge and firefox
 ```
 
 Then load an unpacked build:
@@ -40,6 +41,7 @@ folder (`dist/<browser>/<extension>-<version>.zip`).
 - **Data Leak Guard.** Open an AI chatbot such as chatgpt.com and paste `4111 1111 1111 1111` into the message box.
 - **SaaS Usage Reporter.** Browse a few SaaS sites, then open the dashboard from the popup. **Settings → Overview → Load demo data** fills it with sample data.
 - **Environment Labeler.** Open any `http://localhost:<port>` page to see the DEV label, or open your production site and pick **Production** in the popup.
+- **Shift Clock.** Pin the clock icon and press **Clock in**. Try a 🚬 Smoke break, then look at **Settings → Overview**. Set your standby week under **Settings → Standby**.
 - **Go-Links.** Open the popup on any page and choose **Create link**, or use **Settings → My links → Add**. Then type `go/<name>` in the address bar, or `go` + <kbd>Space</kbd> + `<name>`.
 
 ## Data and sharing
@@ -110,7 +112,7 @@ registry, macOS, Linux and Firefox examples and for force-installing the extensi
 browser-extensions/
 ├── brand/                 brand kit (brand.json + logo) and example kits
 ├── shared/                shared UI, settings/policy layer, branding, shared-data connections (see shared/README.md)
-├── ticket-snap/  dlp-guard/  saas-reporter/  env-labeler/  go-links/
+├── ticket-snap/  dlp-guard/  saas-reporter/  env-labeler/  go-links/  shift-clock/
 ├── examples/policies/     enterprise policy examples
 ├── tools/
 │   ├── build.mjs          builds dist/<browser>/<extension> + zips, generates brand icons and schema.json

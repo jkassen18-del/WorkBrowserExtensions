@@ -1,6 +1,6 @@
 # shared/
 
-Everything the five extensions have in common. The build copies this folder into every
+Everything the six extensions have in common. The build copies this folder into every
 extension as `/shared/`, so extension pages import it with absolute paths
 (`import { h } from '/shared/ui.js'`) and the background script with `./shared/...`.
 

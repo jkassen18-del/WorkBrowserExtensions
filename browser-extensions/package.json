@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "Five branded, local-first workplace browser extensions (Chrome, Edge, Firefox) from one Manifest V3 codebase.",
+  "description": "Six branded, local-first workplace browser extensions (Chrome, Edge, Firefox) from one Manifest V3 codebase.",
   "engines": { "node": ">=18" },
   "scripts": {
     "build": "node tools/build.mjs",
